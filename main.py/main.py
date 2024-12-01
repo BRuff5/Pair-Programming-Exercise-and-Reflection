@@ -59,3 +59,30 @@ def suggest_spelling(word, wordlist):
         if is_one_edit_away(word, w):
             return w
     return None
+
+def main():
+    """
+    Main program spell checker.
+    """
+    wordlist = load_wordlist()
+    print("Spell Checker. Enter '111' to quit.")
+    
+    while True:
+        user_input = input("Enter a word: ").strip()
+        
+        if user_input == "111":
+            print("Terminatinging the program. Goodbye!")
+            break
+        
+        if user_input in wordlist:
+            print("The spelling is correct.")
+        else:
+            suggestion = suggest_spelling(user_input, wordlist)
+            if suggestion:
+                print(f"The suggested spelling is: {suggestion}")
+            else:
+                print("No suggestions found.")
+
+# Entry point for the program
+if __name__ == "__main__":
+    main()
