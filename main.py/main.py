@@ -51,3 +51,11 @@ def is_one_edit_away(word1, word2):
         edits += 1
     return edits == 1
 
+def suggest_spelling(word, wordlist):
+    """
+    Suggest a correct spelling for the word
+    """
+    for w in wordlist:
+        if is_one_edit_away(word, w):
+            return w
+    return None
