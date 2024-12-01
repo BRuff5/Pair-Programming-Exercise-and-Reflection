@@ -35,6 +35,8 @@ class TestSpellChecker(unittest.TestCase):
         self.assertIsNone(suggest_spelling("aappple", self.wordlist))  # Too many edits
         self.assertIsNone(suggest_spelling("unknownword", self.wordlist))  # No match
 
+
+
     def test_no_suggestions_found(self):
         """Test no suggestions for words not in the wordlist."""
         self.assertIsNone(suggest_spelling("xyz", self.wordlist))  # Random string
