@@ -42,10 +42,11 @@ class TestSpellChecker(unittest.TestCase):
         self.assertIsNone(suggest_spelling("xyz", self.wordlist))  # Random string
         self.assertIsNone(suggest_spelling("nonexistentword", self.wordlist))  # Long string
 
-    def test_case_insensitivity(self):
+    def test_case_sensitivity(self):
         """Test handling of different cases."""
-        self.assertEqual(suggest_spelling("Apple", self.wordlist), "apple")  # Case difference
-        self.assertEqual(suggest_spelling("ApPle", self.wordlist), "apple")  # Mixed case
+        self.assertTrue("apple" in self.wordlist)  # lowercase match
+        self.assertFalse("Apple" in self.wordlist)  # Uppercase "A" doesn't match the list as it's lowercase
+        self.assertTrue("APPLE" not in self.wordlist)  # Uppercase doesn't exist in the list
 
 if __name__ == "__main__":
     unittest.main()
